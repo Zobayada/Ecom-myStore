@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../pages/Button';
 import { NavLink } from 'react-router-dom';
-import { BsTwitter } from "react-icons/bs";
-import { FaFacebookF, FaLinkedinIn } from "react-icons/fa"
+import { BsTwitter, BsInstagram } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa"
 
 const Footer = () => {
     return (
@@ -41,13 +41,19 @@ const Footer = () => {
                         <h3>Follow Us</h3>
                         <div className='footer-social--icons'>
                             <div>
-                                <FaLinkedinIn className="icons" />
+                                <a target="_blank" href="https://www.linkedin.com/in/zobayada-akter-77a949211/">
+                                    <FaLinkedinIn className="icons" />
+                                </a>
                             </div>
                             <div>
-                                <BsTwitter className="icons" />
+                                <a target="_blank" href="https://twitter.com/AfnanZobayada">
+                                    <BsTwitter className="icons" />
+                                </a>
                             </div>
                             <div>
-                                <FaFacebookF className="icons" />
+                                <a target="_blank" href="https://www.instagram.com/z_o_b_a_y_a_d_a/">
+                                    <BsInstagram className="icons" />
+                                </a>
                             </div>
                         </div>
                     </div>
