@@ -7,7 +7,7 @@ import Contact from './pages/Contact';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import Products from './pages/Products';
-import SingleProducts from './pages/SingleProducts';
+import SingleProducts from './pages/SingleProduct';
 import { GlobalStyle } from './GlobalStyle';
 import Header from './component/Header';
 import Footer from './component/Footer';
