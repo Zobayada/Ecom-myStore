@@ -1,5 +1,3 @@
-import React from 'react'
-
 const ProductReducer = (state, action) => {
 
     switch (action.type) {
@@ -28,7 +26,6 @@ const ProductReducer = (state, action) => {
         default:
             return state;
     }
-    return state
 }
 
 export default ProductReducer
