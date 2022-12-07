@@ -9,6 +9,7 @@ import { useGlobalProduct } from '../context/ProductContext';
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md"
 import Star from '../component/Star';
+import AddToCart from '../component/AddToCart';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -88,7 +89,9 @@ const SingleProduct = () => {
             </div>
 
             <hr />
-
+            {
+              stock > 0 && <AddToCart product={singleProduct} />
+            }
           </div>
         </div>
       </Container>
