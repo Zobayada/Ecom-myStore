@@ -8,6 +8,7 @@ import PageNavigation from '../component/PageNavigation';
 import { useGlobalProduct } from '../context/ProductContext';
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md"
+import Star from '../component/Star';
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -48,8 +49,7 @@ const SingleProduct = () => {
           </div>
           <div className="product-data">
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
+            <Star stars={stars} reviews={reviews} />
             <p className="product-data-price">
               MRP: <del><FormatPrice price={price + 2000} /></del>
             </p>
@@ -83,12 +83,12 @@ const SingleProduct = () => {
                 <span>{stock > 0 ? "In Stock" : "Not Available"}</span>
               </p>
               <p>
-                ID : <span> {id} </span>
-              </p>
-              <p>
                 Brand :<span> {company} </span>
               </p>
             </div>
+
+            <hr />
+
           </div>
         </div>
       </Container>
