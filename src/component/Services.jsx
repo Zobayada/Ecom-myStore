@@ -96,7 +96,7 @@ const Wrapper = styled.section`
     padding: 2rem;
     border-radius: 50%;
     background-color: #fff;
-    color: red;
+    color: #8490ff;
   }
 `;
 

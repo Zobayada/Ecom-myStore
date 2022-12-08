@@ -23,7 +23,7 @@ justify-content: space-between;
 align-items: center;
 position: relative;
     span{
-        color: red;
+        color: #8490ff;
         font-weight: bold;
     }
 `

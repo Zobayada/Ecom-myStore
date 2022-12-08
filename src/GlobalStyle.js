@@ -19,7 +19,7 @@ html {
 
 body {
   overflow-x: hidden;
-  scrollbar-color: rgb(98 84 243);
+  scrollbar-color: #8490ff;
   scrollbar-width: thin;
 }
 
@@ -33,7 +33,7 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
  
-  background: #e91e63;
+  background: #8490ff;
     border: 5px solid transparent;
     border-radius: 9px;
     background-clip: content-box;
@@ -147,7 +147,7 @@ input, textarea{
     input[type="submit"]{
     max-width: 16rem;
     margin-top: 2rem;
-    background-color: red;
+    background-color: #8490ff;
     color: ${({ theme }) => theme.colors.white};
     padding: 1.4rem 2.2rem;
     border-style: solid;

@@ -5,28 +5,28 @@ import { Button } from '../pages/Button';
 
 const HeroSection = ({ myData }) => {
 
-    const { name, img } = myData
-    return (
-        <Wrapper>
-            <div className="container">
-                <div className="grid grid-two-column">
-                    <div className="hero-section-data">
-                        <p className="intro-data">Welcome to</p>
-                        <h1>my<span style={{ color: "red", fontWeight: "bold" }}>{name}</span></h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, eos natus nam, maiores totam aliquam alias, hic rerum nesciunt cupiditate voluptatibus tempora quos excepturi doloremque dolorem. Officia minus corporis soluta.</p>
-                        <NavLink>
-                            <Button>Shop Now</Button>
-                        </NavLink>
-                    </div>
-                    <div className="hero-section-image">
-                        <figure>
-                            <img src={img} alt="header mobile" className='img-style' />
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </Wrapper>
-    )
+  const { name, img } = myData
+  return (
+    <Wrapper>
+      <div className="container">
+        <div className="grid grid-two-column">
+          <div className="hero-section-data">
+            <p className="intro-data">Welcome to</p>
+            <h1>my<span style={{ color: "#8490ff", fontWeight: "bold" }}>{name}</span></h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, eos natus nam, maiores totam aliquam alias, hic rerum nesciunt cupiditate voluptatibus tempora quos excepturi doloremque dolorem. Officia minus corporis soluta.</p>
+            <NavLink>
+              <Button>Shop Now</Button>
+            </NavLink>
+          </div>
+          <div className="hero-section-image">
+            <figure>
+              <img src={img} alt="header mobile" className='img-style' />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
