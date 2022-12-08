@@ -87,19 +87,19 @@ const Wrapper = styled.section`
     .btn {
       margin: 2rem 0;
       background-color: rgb(0 0 0 / 0%);
-      border: 0.1rem solid rgb(98 84 243);
+      border: 0.1rem solid red;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: rgb(98 84 243);
+      color: red;
       &:hover {
-        background-color: rgb(98 84 243);
+        background-color: red;
       }
       &:hover a {
         color: #fff;
       }
       a {
-        color: rgb(98 84 243);
+        color: red;
         font-size: 1.4rem;
       }
     }
