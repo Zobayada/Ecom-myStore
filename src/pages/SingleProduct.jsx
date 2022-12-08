@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import FormatPrice from '../helpers/FormatPrice';
 import MyImage from '../component/MyImage';
@@ -42,6 +42,7 @@ const SingleProduct = () => {
 
   return (
     <Wrapper>
+
       <PageNavigation title={name} />
       <Container >
         <div className="grid grid-two-column">
