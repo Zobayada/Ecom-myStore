@@ -64,13 +64,26 @@ const FilterReducer = (state, action) => {
             let { all_products } = state;
             let tempFilter = [...all_products]
 
-            const { text } = state.filters;
+            const { text, category, company } = state.filters;
 
             if (text) {
                 tempFilter = tempFilter.filter((curElm) => {
                     return curElm.name.toLowerCase().includes(text)
                 })
             }
+
+            if (category !== "all") {
+                tempFilter = tempFilter.filter((curElm) => {
+                    return curElm.category === category
+                })
+            }
+
+            if (company !== "all") {
+                tempFilter = tempFilter.filter((curElm) => {
+                    return curElm.company.toLowerCase() === company.toLowerCase()
+                })
+            }
+
             return {
                 ...state,
                 filter_products: tempFilter
