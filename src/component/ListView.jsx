@@ -5,32 +5,32 @@ import FormatPrice from '../helpers/FormatPrice';
 import { Button } from "../pages/Button";
 
 const ListView = ({ products }) => {
-    return (
-        <Wrapper className='section'>
-            <div className="container grid">
-                {
-                    products.map((curElm) => {
-                        const { id, name, image, price, description } = curElm;
-                        return (
-                            <div className="card grid grid-two-column">
-                                <figure>
-                                    <img src={image} alt={name} />
-                                </figure>
-                                <div className="card-data">
-                                    <h3>{name}</h3>
-                                    <p><FormatPrice price={price} /></p>
-                                    <p>{description.slice(0, 99)}...</p>
-                                    <NavLink to={`/singleproducts/${id}`} className="btn-main">
-                                        <Button className="btn">Read More</Button>
-                                    </NavLink>
-                                </div>
-                            </div>
-                        )
-                    })
-                }
-            </div>
-        </Wrapper>
-    )
+  return (
+    <Wrapper className='section'>
+      <div className="container grid">
+        {
+          products.map((curElm) => {
+            const { id, name, image, price, description } = curElm;
+            return (
+              <div className="card grid grid-two-column">
+                <figure>
+                  <img src={image} alt={name} />
+                </figure>
+                <div className="card-data">
+                  <h3>{name}</h3>
+                  <p><FormatPrice price={price} /></p>
+                  <p>{description.slice(0, 99)}...</p>
+                  <NavLink to={`/singleproducts/${id}`} className="btn-main">
+                    <Button className="btn">Read More</Button>
+                  </NavLink>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -87,19 +87,19 @@ const Wrapper = styled.section`
     .btn {
       margin: 2rem 0;
       background-color: rgb(0 0 0 / 0%);
-      border: 0.1rem solid red;
+      border: 0.1rem solid #3f51b5;
       display: flex;
       justify-content: center;
       align-items: center;
-      color: red;
+      color: #3f51b5;
       &:hover {
-        background-color: red;
+        background-color: #3f51b5;
       }
       &:hover a {
         color: #fff;
       }
       a {
-        color: red;
+        color: #3f51b5;
         font-size: 1.4rem;
       }
     }
