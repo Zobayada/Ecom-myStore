@@ -1,67 +1,110 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useGlobalFilter } from '../context/FilterContext';
+import { BsCheckLg } from "react-icons/bs"
 
 const FilterSection = () => {
-    const { text, updateFilter, all_products, category } = useGlobalFilter();
+  const { text, updateFilter, all_products, category, color } = useGlobalFilter();
 
-    const getUniqueData = (data, property) => {
-        let newValue = data.map((curElm) => {
-            return curElm[[property]]
-        })
+  const getUniqueData = (data, property) => {
+    let newValue = data.map((curElm) => {
+      return curElm[[property]]
+    })
 
-        return (
-            newValue = ["all", ...new Set(newValue)]
-        );
+    if (property === "colors") {
+      // return (
+      //   newValue = ["all", ...new Set([].concat(...newValue))]
+      // )
+      newValue = newValue.flat()
     }
-
-    const categoryData = getUniqueData(all_products, "category");
-    const companyData = getUniqueData(all_products, "company");
-
     return (
-        <Wrapper>
-            <div className="filter-search">
-                <form action="#" onSubmit={(e) => { e.preventDefault() }}>
-                    <input type="text" name='text' placeholder='search...' value={text} onChange={updateFilter} />
-                </form>
-            </div>
+      newValue = ["all", ...new Set(newValue)]
+    );
 
-            <div className="filter-category">
-                <h3>Category</h3>
-                <div>
-                    {
-                        categoryData.map((curElem, index) => {
-                            return (
-                                <button key={index}
-                                    type="button"
-                                    name='category'
-                                    value={curElem}
-                                    className={curElem === category ? "active" : ""}
-                                    onClick={updateFilter}>
-                                    {curElem}
-                                </button>
-                            )
-                        })
-                    }
-                </div>
-            </div>
+  }
 
-            <div className="filter-company">
-                <h3>Company</h3>
-                <form action="#">
-                    <select name="company" id="company" className="filter-company--select" onClick={updateFilter}>
-                        {
-                            companyData.map((curElem, index) => {
-                                return (<option key={index} value={curElem} name="company">
-                                    {curElem}
-                                </option>)
-                            })
-                        }
-                    </select>
-                </form>
-            </div>
-        </Wrapper>
-    )
+  const categoryData = getUniqueData(all_products, "category");
+  const companyData = getUniqueData(all_products, "company");
+  const colorsData = getUniqueData(all_products, "colors");
+  return (
+    <Wrapper>
+      <div className="filter-search">
+        <form action="#" onSubmit={(e) => { e.preventDefault() }}>
+          <input type="text" name='text' placeholder='search...' value={text} onChange={updateFilter} />
+        </form>
+      </div>
+
+      <div className="filter-category">
+        <h3>Category</h3>
+        <div>
+          {
+            categoryData.map((curElem, index) => {
+              return (
+                <button key={index}
+                  type="button"
+                  name='category'
+                  value={curElem}
+                  className={curElem === category ? "active" : ""}
+                  onClick={updateFilter}>
+                  {curElem}
+                </button>
+              )
+            })
+          }
+        </div>
+      </div>
+
+      <div className="filter-company">
+        <h3>Company</h3>
+        <form action="#">
+          <select name="company" id="company" className="filter-company--select" onClick={updateFilter}>
+            {
+              companyData.map((curElem, index) => {
+                return (<option key={index} value={curElem} name="company">
+                  {curElem}
+                </option>)
+              })
+            }
+          </select>
+        </form>
+      </div>
+
+      <div className="filter-colors colors">
+        <h3>Colors: </h3>
+        <div className='filter-color-style'>
+          {
+            colorsData.map((curElem, index) => {
+              console.log(curElem);
+              console.log(color);
+              if (curElem === "all") {
+                return (
+                  <button key={index}
+                    onClick={updateFilter}
+                    className="color-all--style"
+                    type="button"
+                    name='color'
+                    value={curElem}>
+                    all
+                  </button>
+                )
+              }
+              return (
+                <button key={index}
+                  type="button"
+                  name='color'
+                  onClick={updateFilter}
+                  style={{ backgroundColor: curElem }}
+                  className={color === curElem ? "btnStyle active" : "btnStyle"}
+                  value={curElem}>
+                  {color == curElem ? <BsCheckLg className='checkStyle' /> : null}
+                </button>
+              )
+            })
+          }
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -97,7 +140,7 @@ const Wrapper = styled.section`
       .active {
         border-bottom: 1px solid #000;
         color: ${({ theme }) => theme.colors.btn};
-      }
+        }
     }
   }
   .filter-company--select {
@@ -109,6 +152,7 @@ const Wrapper = styled.section`
   .filter-color-style {
     display: flex;
     justify-content: center;
+    align-items: center;
   }
   .color-all--style {
     background-color: transparent;
@@ -125,6 +169,7 @@ const Wrapper = styled.section`
     border: none;
     outline: none;
     opacity: 0.5;
+    line-height: 0;
     cursor: pointer;
     &:hover {
       opacity: 1;
