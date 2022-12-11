@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useGlobalFilter } from '../context/FilterContext';
-import { BsCheckLg } from "react-icons/bs"
+import { FaCheck } from "react-icons/fa";
+import FormatPrice from '../helpers/FormatPrice';
 
 const FilterSection = () => {
-  const { text, updateFilter, all_products, category, color } = useGlobalFilter();
+  const {
+    filters: { text, category, color, price, maxPrice, minPrice },
+    updateFilter, all_products } = useGlobalFilter();
 
   const getUniqueData = (data, property) => {
     let newValue = data.map((curElm) => {
@@ -74,8 +77,6 @@ const FilterSection = () => {
         <div className='filter-color-style'>
           {
             colorsData.map((curElem, index) => {
-              console.log(curElem);
-              console.log(color);
               if (curElem === "all") {
                 return (
                   <button key={index}
@@ -96,12 +97,28 @@ const FilterSection = () => {
                   style={{ backgroundColor: curElem }}
                   className={color === curElem ? "btnStyle active" : "btnStyle"}
                   value={curElem}>
-                  {color == curElem ? <BsCheckLg className='checkStyle' /> : null}
+                  {color === curElem ? <FaCheck className="checkStyle" /> : null}
                 </button>
               )
             })
           }
         </div>
+      </div>
+
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p>
+          <FormatPrice price={price} />
+        </p>
+
+        <input
+          type="range"
+          name="price"
+          min={minPrice}
+          max={maxPrice}
+          value={price}
+          onChange={updateFilter}
+        />
       </div>
     </Wrapper>
   )

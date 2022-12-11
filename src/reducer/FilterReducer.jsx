@@ -1,12 +1,21 @@
 const FilterReducer = (state, action) => {
 
     switch (action.type) {
+
         case "FILTER_PRODUTS_LOADING":
+
+            let priceArr = action.payload.map((curElem) => curElem.price);
+            let maxPrice = Math.max(...priceArr);
+            let minPrice = Math.min(...priceArr);
+
             return {
                 ...state,
                 filter_products: [...action.payload],
-                all_products: [...action.payload]
+                all_products: [...action.payload],
+                filters: { ...state.filters, maxPrice, price: maxPrice, minPrice },
+
             }
+
         case "SET_GRID_VIEW":
             return {
                 ...state,
@@ -64,7 +73,7 @@ const FilterReducer = (state, action) => {
             let { all_products } = state;
             let tempFilter = [...all_products]
 
-            const { text, category, company, color } = state.filters;
+            const { text, category, company, color, price } = state.filters;
 
             if (text) {
                 tempFilter = tempFilter.filter((curElm) => {
@@ -89,7 +98,15 @@ const FilterReducer = (state, action) => {
                     return curElm.colors.includes(color)
                 })
             }
-
+            if (price === 0) {
+                tempFilter = tempFilter.filter(
+                    (curElm) => curElm.price === price
+                );
+            } else {
+                tempFilter = tempFilter.filter(
+                    (curElm) => curElm.price <= price
+                );
+            }
             return {
                 ...state,
                 filter_products: tempFilter

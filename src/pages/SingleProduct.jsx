@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import FormatPrice from '../helpers/FormatPrice';
 import MyImage from '../component/MyImage';
@@ -31,7 +31,7 @@ const SingleProduct = () => {
     reviews,
     image,
   } = singleProduct;
-
+  console.log(price);
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, []);
