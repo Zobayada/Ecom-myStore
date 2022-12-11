@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import { useGlobalFilter } from '../context/FilterContext';
 import { FaCheck } from "react-icons/fa";
 import FormatPrice from '../helpers/FormatPrice';
+import { Button } from "../pages/Button"
 
 const FilterSection = () => {
   const {
     filters: { text, category, color, price, maxPrice, minPrice },
-    updateFilter, all_products } = useGlobalFilter();
+    updateFilter, all_products, clearFilter } = useGlobalFilter();
 
   const getUniqueData = (data, property) => {
     let newValue = data.map((curElm) => {
@@ -120,6 +121,13 @@ const FilterSection = () => {
           onChange={updateFilter}
         />
       </div>
+
+      <div className="filter-clear">
+        <Button className="btn" onClick={clearFilter}>
+          Clear Filters
+        </Button>
+      </div>
+
     </Wrapper>
   )
 }

@@ -4,52 +4,55 @@ import { FaCheck } from "react-icons/fa";
 import CartAmountToggle from './CartAmountToggle';
 import { Button } from "../pages/Button";
 import { NavLink } from 'react-router-dom';
+import { useGlobalCart } from '../context/CartContext';
 
 const AddToCart = ({ product }) => {
 
-    const { id, colors, stock } = product;
+  const { addToCart } = useGlobalCart();
 
-    const [color, setColor] = useState(colors[0]);
-    const [amount, setAmount] = useState(1);
+  const { id, colors, stock } = product;
 
-    const setDecrease = () => {
-        (amount > 1) ? setAmount(amount - 1) : setAmount(1)
-    };
+  const [color, setColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
 
-    const setIncrease = () => {
-        stock > amount ? setAmount(amount + 1) : setAmount(stock)
+  const setDecrease = () => {
+    (amount > 1) ? setAmount(amount - 1) : setAmount(1)
+  };
 
-    };
-    return (
-        <Wrapper>
-            <div className="colors">
-                <p>
-                    Colors:
-                    {
-                        colors.map((curElm, index) => {
-                            return (
-                                <button
-                                    className={color === curElm ? "btnStyle active" : "btnStyle"}
-                                    style={{ backgroundColor: curElm }}
-                                    onClick={() => setColor(curElm)}
-                                    key={index}>
-                                    {curElm === color ? <FaCheck className='checkStyle' /> : null}
-                                </button>
-                            )
-                        })
-                    }
-                </p>
-            </div>
+  const setIncrease = () => {
+    stock > amount ? setAmount(amount + 1) : setAmount(stock)
 
-            {/* add to cart */}
+  };
+  return (
+    <Wrapper>
+      <div className="colors">
+        <p>
+          Colors:
+          {
+            colors.map((curElm, index) => {
+              return (
+                <button
+                  className={color === curElm ? "btnStyle active" : "btnStyle"}
+                  style={{ backgroundColor: curElm }}
+                  onClick={() => setColor(curElm)}
+                  key={index}>
+                  {curElm === color ? <FaCheck className='checkStyle' /> : null}
+                </button>
+              )
+            })
+          }
+        </p>
+      </div>
 
-            <CartAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease} />
+      {/* add to cart */}
 
-            <NavLink to="/cart">
-                <Button className="btn">Add To Cart</Button>
-            </NavLink>
-        </Wrapper>
-    )
+      <CartAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease} />
+
+      <NavLink to="/cart" onClick={() => addToCart(id, colors, amount, product)}>
+        <Button className="btn">Add To Cart</Button>
+      </NavLink>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`

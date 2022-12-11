@@ -45,6 +45,10 @@ const FilterProvider = ({ children }) => {
         return dispatch({ type: "GET_FILTER_VALUE", payload: { name, value } });
     }
 
+    const clearFilter = () => {
+        dispatch({ type: "CLEAR_FILTER" })
+    }
+
     useEffect(() => {
         dispatch({ type: "FILTER_PRODUCT" })
         dispatch({ type: "SORTING_PRODUCT" })
@@ -55,7 +59,7 @@ const FilterProvider = ({ children }) => {
     }, [products])
 
     return (
-        <FilterContext.Provider value={{ ...state, setGridView, setListView, sorting, updateFilter }}>
+        <FilterContext.Provider value={{ ...state, setGridView, setListView, sorting, updateFilter, clearFilter }}>
             {children}
         </FilterContext.Provider>
     )
