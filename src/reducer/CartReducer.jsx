@@ -4,9 +4,20 @@ const CartReducer = (state, action) => {
         case "ADD_TO_CART":
 
             let { id, colors, amount, product } = action.payload;
-            console.log(product);
+
+            let cartProduct;
+            cartProduct = {
+                id: id + colors,
+                name: product.name,
+                amount,
+                colors,
+                image: product.image[0].url,
+                price: product.price,
+                max: product.stock
+            }
             return {
-                ...state
+                ...state,
+                cart: [...state.cart, cartProduct]
             }
         default:
             return state
