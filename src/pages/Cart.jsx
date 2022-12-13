@@ -2,12 +2,13 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { useGlobalCart } from '../context/CartContext';
+import FormatPrice from '../helpers/FormatPrice';
 import { Button } from './Button';
 import CartItem from './CartItem';
 
 const Cart = () => {
 
-  const { cart, clearCart } = useGlobalCart()
+  const { cart, clearCart, total_amount, shipping_fee } = useGlobalCart()
 
   if (cart.length === 0) {
     return <EmptyDiv>
@@ -41,6 +42,30 @@ const Cart = () => {
             <Button>Continue Shopping</Button>
           </NavLink>
           <Button className='btn btn-clear' onClick={clearCart}>Clear Cart</Button>
+        </div>
+
+        <div className="order-total--amount">
+          <div className="order-total--subdata">
+            <div>
+              <p>subtotal:</p>
+              <p>
+                <FormatPrice price={total_amount} />
+              </p>
+            </div>
+            <div>
+              <p>Shipping Fee:</p>
+              <p>
+                <FormatPrice price={shipping_fee} />
+              </p>
+            </div>
+            <hr />
+            <div>
+              <p>Order Total:</p>
+              <p>
+                <FormatPrice price={total_amount + shipping_fee} />
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>
