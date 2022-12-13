@@ -14,7 +14,7 @@ const HeroSection = ({ myData }) => {
             <p className="intro-data">Welcome to</p>
             <h1>my<span style={{ color: "#3f51b5", fontWeight: "bold" }}>{name}</span></h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, eos natus nam, maiores totam aliquam alias, hic rerum nesciunt cupiditate voluptatibus tempora quos excepturi doloremque dolorem. Officia minus corporis soluta.</p>
-            <NavLink>
+            <NavLink to="/product">
               <Button>Shop Now</Button>
             </NavLink>
           </div>

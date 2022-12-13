@@ -44,7 +44,7 @@ const SingleProduct = () => {
     <Wrapper>
 
       <PageNavigation title={name} />
-      <Container >
+      <div className='container'>
         <div className="grid grid-two-column">
           <div className="product_images">
             <MyImage imgs={image} />
@@ -95,7 +95,7 @@ const SingleProduct = () => {
             }
           </div>
         </div>
-      </Container>
+      </div>
     </Wrapper>
   )
 }
@@ -116,7 +116,7 @@ const Wrapper = styled.section`
     .product-data-warranty {
       width: 100%;
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between; 
       align-items: center;
       border-bottom: 1px solid #ccc;
       margin-bottom: 1rem;
@@ -170,8 +170,16 @@ const Wrapper = styled.section`
     align-items: center;
   }
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    padding: 0 2.4rem;
+    .container{
+      padding: 0 2.4rem;
+    }
   }
+  @media (min-width: ${({ theme }) => theme.media.mobile}) {
+    .container{
+      padding: 0 12rem;
+    }
+  }
+  
 `;
 
 
